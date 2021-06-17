@@ -4,6 +4,12 @@ targetCustomizations:
   helm:
     values:
       replication: false
+      prometheus:
+      prometheusSpec:
+        additionalAlertRelabelConfigs:
+          - source_labels: [__address__]
+            target_label: cluster
+            replacement: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
   clusterSelector:
     matchLabels:
       env: dev
