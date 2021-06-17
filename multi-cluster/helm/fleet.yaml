@@ -5,7 +5,7 @@ targetCustomizations:
     values:
       replication: false
       prometheus:
-      	prometheusSpec:
+        prometheusSpec:
           additionalAlertRelabelConfigs:
             - source_labels: [__address__]
               target_label: cluster
