@@ -4,7 +4,13 @@ targetCustomizations:
   helm:
     values:
       replication: false
-      replacement: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
+      prometheus:
+        prometheusSpec:
+          additionalAlertRelabelConfigs:
+            - source_labels: [__address__]
+              target_label: cluster
+              additional_list:
+              - replacement: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
   clusterSelector:
     matchLabels:
       env: dev
@@ -13,7 +19,6 @@ targetCustomizations:
   helm:
     values:
       replicas: 3
-      replacement: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
   clusterSelector:
     matchLabels:
       env: test
@@ -23,7 +28,6 @@ targetCustomizations:
     values:
       serviceType: LoadBalancer
       replicas: 3
-      replacement: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
   clusterSelector:
     matchLabels:
       env: prod
