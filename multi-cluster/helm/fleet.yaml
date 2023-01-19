@@ -3,6 +3,8 @@ targetCustomizations:
 - name: dev
   helm:
     values:
+      any-custom: value
+      variableName: global.fleet.clusterLabels.LABELNAME
       replication: false
       prometheus:
         prometheusSpec:
@@ -19,6 +21,8 @@ targetCustomizations:
   helm:
     values:
       replicas: 3
+      any-custom: value
+      variableName: global.fleet.clusterLabels.LABELNAME
   clusterSelector:
     matchLabels:
       env: test
@@ -26,6 +30,8 @@ targetCustomizations:
 - name: prod
   helm:
     values:
+      any-custom: value
+      variableName: global.fleet.clusterLabels.LABELNAME
       serviceType: LoadBalancer
       replicas: 3
   clusterSelector:
