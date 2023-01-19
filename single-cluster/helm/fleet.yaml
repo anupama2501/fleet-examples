@@ -30,3 +30,7 @@ helm:
   # Custom values that will be passed as values.yaml to the installation
   values:
     replicas: 2
+    any-custom: value
+  # All labels on Rancher clusters are available using global.fleet.clusterLabels.LABELNAME
+  # These can now be accessed directly as variables
+    variableName: global.fleet.clusterLabels.LABELNAME
