@@ -41,3 +41,15 @@ targetCustomizations:
   clusterSelector:
     matchLabels:
       env: prod
+- name: test3
+  helm:
+    chart: simple-chart
+    valuesFrom:
+      - secretKeyRef:
+          name: secret-values
+          namespace: default
+          key: values.yaml
+        configMapKeyRef:
+          name: configmap-values
+          namespace: default
+          key: values.yaml
