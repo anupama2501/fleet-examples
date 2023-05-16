@@ -47,6 +47,15 @@ targetCustomizations:
       variableName: global.fleet.clusterLabels.LABELNAME
       serviceType: LoadBalancer
       replicas: 3
+    valuesFrom:
+      - secretKeyRef:
+          name: secret-values
+          namespace: default
+          key: values.yaml
+        configMapKeyRef:
+          name: configmap-values
+          namespace: default
+          key: values.yaml
   clusterSelector:
     matchLabels:
       env: prod
