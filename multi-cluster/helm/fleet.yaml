@@ -27,6 +27,15 @@ targetCustomizations:
       replicas: 3
       any-custom: value
       variableName: global.fleet.clusterLabels.LABELNAME
+    valuesFrom:
+      - secretKeyRef:
+          name: secret-values
+          namespace: default
+          key: values.yaml
+        configMapKeyRef:
+          name: configmap-values
+          namespace: default
+          key: values.yaml
   clusterSelector:
     matchLabels:
       env: test
@@ -41,15 +50,4 @@ targetCustomizations:
   clusterSelector:
     matchLabels:
       env: prod
-- name: test3
-  helm:
-    chart: simple-chart
-    valuesFrom:
-      - secretKeyRef:
-          name: secret-values
-          namespace: default
-          key: values.yaml
-        configMapKeyRef:
-          name: configmap-values
-          namespace: default
-          key: values.yaml
+
