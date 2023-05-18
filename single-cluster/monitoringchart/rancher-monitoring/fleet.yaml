@@ -8,8 +8,8 @@ helm:
     grafana:
       resources:
         limits:
-          cpu: 300m
-          memory: 500Mi
+          cpu: 200m
+          memory: 300Mi
 diff:
   comparePatches:
   - apiVersion: admissionregistration.k8s.io/v1beta1
